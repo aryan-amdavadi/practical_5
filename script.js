@@ -1,44 +1,51 @@
-const form = document.getElementById("registrationForm");
-const alertBox = document.getElementById("alertBox");
+/* CURSOR GLOW */
+const glow = document.querySelector(".cursor-glow");
 
-function showAlert(msg) {
-alertBox.textContent = msg;
-alertBox.style.display = "block";
+document.addEventListener("mousemove", e => {
+glow.style.left = e.clientX + "px";
+glow.style.top = e.clientY + "px";
+});
 
-```
-setTimeout(() => {
-    alertBox.style.display = "none";
-}, 2500);
-```
+/* VALIDATION */
+const inputs = document.querySelectorAll("input");
 
-}
+inputs.forEach(input=>{
+input.addEventListener("input", ()=>{
+const parent = input.parentElement;
+const status = parent.querySelector(".icon-status");
 
-form.addEventListener("submit", function(e) {
-e.preventDefault();
 
-```
-const name = document.getElementById("name").value;
+    if(input.checkValidity()){
+        parent.classList.add("valid");
+        parent.classList.remove("invalid");
+        status.className = "fa-solid fa-check icon-status";
+    } else {
+        parent.classList.add("invalid");
+        parent.classList.remove("valid");
+        status.className = "fa-solid fa-xmark icon-status";
+    }
+});
 
-if (name === "") {
-    showAlert("Fill all required fields");
-    return;
-}
-
-showAlert("Registration Successful 🌿");
-form.reset();
-```
 
 });
 
-/* PASSWORD BAR */
-document.getElementById("password").addEventListener("input", function() {
-let val = this.value;
-let bar = document.getElementById("strengthBar");
+const pass = document.getElementById("password");
+const bar = document.getElementById("bar");
+const text = document.getElementById("strengthText");
 
-```
-if (val.length < 6) bar.style.width = "30%";
-else if (val.length < 10) bar.style.width = "60%";
-else bar.style.width = "100%";
-```
+pass.addEventListener("input", () => {
+    let v = pass.value;
+    let score = 0;
 
+    if (v.length >= 8) score++;
+    if (/[A-Z]/.test(v)) score++;
+    if (/[0-9]/.test(v)) score++;
+    if (/[@$!%*?&]/.test(v)) score++;
+
+    let colors = ["#ff4d4d","#ffa500","#6bc79c","#00ff99"];
+    let labels = ["Weak","Medium","Good","Strong"];
+
+    bar.style.width = (score * 25) + "%";
+    bar.style.background = colors[score-1] || "#444";
+    text.textContent = v ? labels[score-1] || "Too Weak" : "";
 });

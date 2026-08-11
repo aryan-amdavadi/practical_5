@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Student Registration</title>
+<title>StudentHub</title>
 
 <link rel="stylesheet" href="style.css">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -15,65 +14,88 @@
 
 <body>
 
-<div class="bg"></div>
+<!-- BACKGROUND IMAGE -->
+<div class="bg-image"></div>
+<div class="overlay"></div>
 
-<main class="page-wrapper">
 
+<main class="layout">
 
-<div class="container glass">
+<!-- LEFT HERO -->
+<section class="hero">
+    <h1>
+        Grow.<br>
+        <span>Learn.</span><br>
+        Succeed.
+    </h1>
 
-    <h1><i class="fa-solid fa-leaf"></i> Register</h1>
-    <p class="subtitle">Create your account</p>
+    <p>
+        Join StudentHub and unlock a world of knowledge and opportunities.
+    </p>
 
-    <form id="registrationForm" novalidate>
+    <div class="features">
+        <div><i class="fa fa-graduation-cap"></i> Smart Learning</div>
+        <div><i class="fa fa-chart-line"></i> Track Progress</div>
+        <div><i class="fa fa-users"></i> Connect & Grow</div>
+    </div>
+</section>
 
-        <div class="form-group">
+<!-- RIGHT FORM -->
+<section class="form-section">
+
+<div class="card">
+
+    <h2>Create Account</h2>
+
+    <form id="form">
+
+        <div class="input">
+            <i class="fa fa-user"></i>
+            <input type="text" required>
             <label>Full Name</label>
-            <input type="text" id="name">
-            <span class="error" id="nameError"></span>
         </div>
 
-        <div class="form-group">
+        <div class="input">
+            <i class="fa fa-envelope"></i>
+            <input type="email" required>
             <label>Email</label>
-            <input type="email" id="email">
-            <span class="error" id="emailError"></span>
         </div>
 
-        <div class="form-group">
+        <div class="input">
+            <i class="fa fa-phone"></i>
+            <input type="tel" required>
             <label>Mobile</label>
-            <input type="tel" id="mobile">
-            <span class="error" id="mobileError"></span>
         </div>
 
-        <div class="form-group">
+        <div class="input">
+            <i class="fa fa-lock"></i>
+            <input type="password" id="password" required>
             <label>Password</label>
-            <input type="password" id="password">
-            <div class="strength-container">
-                <div id="strengthBar"></div>
+
+            <div class="strength">
+                <div id="bar"></div>
             </div>
-            <span class="error" id="passwordError"></span>
+            <p id="strengthText"></p>
         </div>
 
-        <div class="form-group">
+        <div class="input">
+            <i class="fa fa-lock"></i>
+            <input type="password" required>
             <label>Confirm Password</label>
-            <input type="password" id="confirmPassword">
-            <span class="error" id="confirmPasswordError"></span>
         </div>
 
-        <div class="form-group">
-            <label>Course</label>
-            <select id="course">
+        <!-- DROPDOWN -->
+        <div class="select-group">
+            <select required>
                 <option value="">Select Course</option>
                 <option>IT</option>
                 <option>CE</option>
                 <option>CSE</option>
-                <option>AI</option>
             </select>
         </div>
 
-        <div class="form-group">
-            <label>Year</label>
-            <select id="year">
+        <div class="select-group">
+            <select required>
                 <option value="">Select Year</option>
                 <option>1</option>
                 <option>2</option>
@@ -82,23 +104,17 @@
             </select>
         </div>
 
-        <div class="form-group">
-            <label>Gender</label>
-            <div class="radio-group">
-                <label class="radio">
-                    <input type="radio" name="gender">
-                    <span></span> Male
-                </label>
-                <label class="radio">
-                    <input type="radio" name="gender">
-                    <span></span> Female
-                </label>
-            </div>
+        <!-- RADIO -->
+        <div class="radio-group">
+            <label><input type="radio" name="g"> Male</label>
+            <label><input type="radio" name="g"> Female</label>
+            <label><input type="radio" name="g"> Other</label>
         </div>
 
-        <div class="form-group terms">
+        <!-- TERMS -->
+        <div class="terms">
             <label>
-                <input type="checkbox" id="terms"> Accept Terms
+                <input type="checkbox"> I agree to Terms
             </label>
         </div>
 
@@ -108,10 +124,9 @@
 
 </div>
 
+</section>
 
 </main>
-
-<div id="alertBox" class="alert"></div>
 
 <script src="script.js"></script>
 
